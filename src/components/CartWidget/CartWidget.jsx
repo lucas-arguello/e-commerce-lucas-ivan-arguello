@@ -1,12 +1,32 @@
 
 
-function CartWidget() {
+export const CartWidget = () => {
   return (
     <div>
-       2
-        <img src='../public/logo-mi-vivero.jpg' alt="carrito" />
+      2 🛒
     </div>
   )
 }
 
-export default CartWidget
+
+
+
+
+
+
+
+
+
+
+
+// const CartWidget = () => {
+//   return (
+//     <div>
+
+//       2🛒 
+//     </div>
+//   )
+// }
+
+// export default CartWidget
+
