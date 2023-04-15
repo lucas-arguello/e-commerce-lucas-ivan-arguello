@@ -4,8 +4,11 @@
 
 import { NavBar } from './components/NavBar/NavBar';
 import { ItemListContainer } from './components/ItemListContainer/ItemListContainer';
+import { ItemCount } from './components/ItemCount/ItemCount';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 
 
@@ -19,6 +22,7 @@ return (
 
        <NavBar/>
        <ItemListContainer greeting= {"Bienvenidos- Esto es ItemListContainer"}/> 
+       <ItemCount/>
         
       </div>
       
