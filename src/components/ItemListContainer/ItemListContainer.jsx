@@ -2,15 +2,18 @@ import { useEffect } from "react"
 
 let miPromesa = new Promise ((res,rej)=>{
 
-  
+  res(productos)
 })
 
 
 export const ItemListContainer = ({greeting}) => {
 
-  useEffect(() => {
+  useEffect(() => { 
 
-      
+        miPromesa
+            .then ((prod) => console.log(prod))
+            .catch ((err) => console.log(err))
+            .finally (() => console.log("Gracias por su visita"))
 
 
   })
