@@ -21,7 +21,7 @@ return (
       <div className="App">
 
        <NavBar/>
-       <ItemListContainer greeting= {"Bienvenidos- Esto es ItemListContainer"}/> 
+       <ItemListContainer/> 
        <ItemCount/>
         
       </div>
