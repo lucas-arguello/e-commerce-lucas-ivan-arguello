@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { useEffect } from "react"
-import { miFetch } from "./miFetch"
+import { Link } from "react-router-dom"
+import { miFetch } from "../../miFetch"
+import {useParams} from "react-router-dom"
+import { ItemList } from "../ItemList/ItemList"
 
 
 
@@ -8,48 +11,46 @@ import { miFetch } from "./miFetch"
 export const ItemListContainer = () => {
   const [productos, setProductos] = useState ([])
   const [isLoading, setIsLoading] = useState(true)
+  const { categoria } = useParams()
 
-  useEffect(() => { 
+  //console.log(categoria)
 
-        miFetch
-            .then ((resultado) => setProductos(resultado))
-            .catch ((err) => console.log(err))
-            .finally (() => setIsLoading(false))
+  useEffect(() => {    
 
+        if (!categoria) {
+          miFetch()
+          .then ((resultado) => setProductos(resultado))
+          .catch ((err) => console.log(err))
+          .finally (() => setIsLoading(false))
 
-  }, [])
+        } else {
+          miFetch()
+          .then ((resultado) => {
+            setProductos(resultado.filter(productos =>productos.categoria === categoria))
+          })
+          .catch ((err) => console.log(err))
+          .finally (() => setIsLoading(false))
+        }
+      }, [categoria]);
+       
 
- //console.log(productos)
+console.log(productos)
 
   return (
-    <div>
+    <div className= "row">
         { isLoading ? 
 
                     <h2>Cargando...</h2> 
                     :
-                    productos.map (({id, categoria, nombre, cantidad, descr, precio, img}) => 
-                    
-                                          <div key= {id} className= "card w-25">
+                
+                    <ItemList productos = {productos}/>
+                   
 
-                                              <img src= {img} alt="imagen-card" />
-                                              <div className="card-body">
-                                                  <h5> Nombre: {nombre}</h5>
-                                                  <label><strong>Categoria:</strong> {categoria}</label>
-                                                  <p><strong>Descripcion:</strong> {descr}</p>
-                                                  <p><strong>Precio: </strong> ${precio}</p>
-                                                  <p><strong>Cantidad en Stock:</strong> {cantidad}</p>
-                                              </div>
-                                              <div className="card-footer">
-                                                  <button className="btn btn-outline-dark"> Agregar </button>
-                                              </div>
-
-                                          </div>
-                                  )
-
-        }
+        } 
     </div>
   )
 }
+
 
 
 

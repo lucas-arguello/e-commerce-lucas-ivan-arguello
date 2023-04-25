@@ -1,27 +1,29 @@
 
-//import {Navbar, Container, Nav } from "react-bootstrap"
+import {Link, NavLink} from "react-router-dom"
 import { Navbar, Container, Nav, } from "react-bootstrap"
 import { CartWidget } from "../CartWidget/CartWidget"
-
-
 
 export const NavBar = () => {
 
   return (
       
-       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Container>
-            <Navbar.Brand href="#home">MI VIVERO VIRTUAL</Navbar.Brand>
+       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
+          <Container >
+
+            <Link to= "/" > 
+               MI VIVERO VIRTUAL 
+            </Link>
+
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
              <Navbar.Collapse id="responsive-navbar-nav">
                <Nav className="me-auto">
-                 <Nav.Link href="#features">   Plantas de interior</Nav.Link>
-                 <Nav.Link href="#pricing">   Plantas de exterior</Nav.Link>
+                 <NavLink to="/categoria/Planta de interior" className= { ({isActive}) => isActive ? "btn btn-primary" : "btn btn-outline-primary"}>   Plantas de interior</NavLink>
+                 <NavLink to="/categoria/Planta de exterior" className= { ({isActive}) => isActive ? "btn btn-primary" : "btn btn-outline-primary"}>   Plantas de exterior</NavLink>
                </Nav>
                <Nav>
-                 <Nav.Link eventKey={2} href="#memes">
+                 <Link to= "cart">
                       <CartWidget/>
-                 </Nav.Link>
+                 </Link>
                </Nav>
              </Navbar.Collapse>
            </Container>
@@ -48,32 +50,5 @@ export const NavBar = () => {
 
 
 
-// import {Container, Nav, Navbar} from "react-bootstrap"
-// import CartWidget from "../CartWidget/CartWidget"
 
-// export const NavBar = () => {
-//     return (
-//         <Navbar collapseOnSelect expand="lg" bg="blue" variant="dark">
-//           <Container>
-//             <Navbar.Brand href="#home">MI VIVERO VIRTUAL</Navbar.Brand>
-//             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-//             <Navbar.Collapse id="responsive-navbar-nav">
-//               <Nav className="me-auto">
-//                 <Nav.Link href="#pInterior">   Plantas de interior</Nav.Link>
-//                 <Nav.Link href="#pExterior">   Plantas de exterior</Nav.Link>
-//               </Nav>
-//               <Nav>
-                
-//                 <Nav.Link eventKey={2} href="#widget">
-                
-//                 CartWidget
-
-//                 </Nav.Link>
-//               </Nav>
-//             </Navbar.Collapse>
-//           </Container>
-          
-//       </Navbar>
-//     )
-// }
 
